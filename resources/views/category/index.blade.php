@@ -6,10 +6,40 @@
 
 @section('main-content')
     <section>
+        @if (session('success'))
+            <article id="alert" role="alert">
+                <header>
+                    <strong>Éxito</strong>
+                </header>
+
+                <p>
+                    {{ session('success') }}
+                </p>
+
+                <footer>
+                    <button type="button" onclick="closeAlert()">
+                        Cerrar
+                    </button>
+                </footer>
+            </article>
+
+            <script>
+                function closeAlert() {
+                    document.getElementById('alert').remove();
+                }
+            </script>
+        @endif
+    </section>
+
+    <section>
         <hgroup>
             <h2>Categorías</h2>
             <p>Organiza tus categorías de productos</p>
         </hgroup>
+    </section>
+
+    <section>
+        <a href="{{ route('category.create') }}" class="secondary">Crear nueva categoría</a>
     </section>
 
     <section>
@@ -35,5 +65,6 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $categories->links() }}
     </section>
 @endsection

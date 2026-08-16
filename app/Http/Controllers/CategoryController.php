@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Http\Requests\CreateCategoryRequest;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -12,7 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::paginate(10);
+        $categories = Category::simplePaginate(10);
 
         return view('category.index', compact('categories'));
     }
@@ -22,15 +23,24 @@ class CategoryController extends Controller
      */
     public function create()
     {
-        //
+        return view('category.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateCategoryRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+
+        $category = new Category();
+        $category->name = $validatedData['name'];
+        $category->description = $validatedData['description'];
+        $category->status = $validatedData['status'];
+        $category->user_id = 1;
+        $category->save();
+
+        return redirect()->route('category.index')->with('success', 'Categoría creada exitosamente.');
     }
 
     /**
