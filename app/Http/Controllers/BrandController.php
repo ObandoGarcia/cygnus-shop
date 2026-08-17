@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateBrandRequest;
 
 class BrandController extends Controller
 {
@@ -12,7 +13,9 @@ class BrandController extends Controller
      */
     public function index()
     {
-        //
+        $brands = Brand::paginate(10);
+
+        return view('brand.index', compact('brands'));
     }
 
     /**
@@ -20,15 +23,23 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('brand.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateBrandRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+
+        $brand = new Brand();
+        $brand->name = $validatedData['name'];
+        $brand->status = $validatedData['status'];
+        $brand->user_id = 1;
+        $brand->save();
+
+        return redirect()->route('brand.index')->with('success', 'Marca creada exitosamente.');
     }
 
     /**

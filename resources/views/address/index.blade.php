@@ -5,15 +5,13 @@
 @endsection
 
 @section('main-content')
-    <section>
-        <hgroup>
-            <h2>Direcciones</h2>
-            <p>Organiza tus direcciones de envío</p>
-        </hgroup>
+    <section class="mt-3">
+        <h2>Direcciones</h2>
+        <p>Organiza tus direcciones de envío</p>
     </section>
 
-    <section>
-        <table>
+    <section class="mt-3">
+        <table class="table table-bordered">
             <thead>
                 <tr>
                     <th>Colonia</th>
@@ -45,5 +43,6 @@
                 @endforeach
             </tbody>
         </table>
+        {{ $addresses->links() }}
     </section>
 @endsection
