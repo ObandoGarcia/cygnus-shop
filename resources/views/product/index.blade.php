@@ -5,18 +5,19 @@
 @endsection
 
 @section('main-content')
-
     <section class="mt-3">
         <h2>Productos</h2>
         <p>En esta sección puedes ver todos los productos registrados en el sistema.</p>
     </section>
 
     <section>
-        <a href="{{ route('product.create') }}" class="btn btn-primary">Crear nuevo producto</a>
+        <a href="{{ route('product.create') }}" class="btn btn-primary">
+            Crear nuevo producto
+        </a>
     </section>
 
-    <section class="mt-3">
-        <table class="table table-bordered">
+    <section class="mt-3 table-responsive">
+        <table class="table table-bordered table-vcenter">
             <thead>
                 <tr>
                     <th>Nombre</th>
@@ -38,7 +39,7 @@
                         <td>{{ $product->name }}</td>
                         <td>{{ $product->description }}</td>
                         <td>{{ $product->code }}</td>
-                        <td>{{ $product->purchase_price}}</td>
+                        <td>{{ $product->purchase_price }}</td>
                         <td>{{ $product->sale_price }}</td>
                         <td>{{ $product->stock }}</td>
                         <td>{{ $product->available_stock }}</td>

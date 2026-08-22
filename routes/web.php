@@ -6,6 +6,7 @@ use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\BrandController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ImageController;
 
 //HomeController
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -20,11 +21,17 @@ Route::get('/category/create', [CategoryController::class, 'create'])->name('cat
 Route::post('/category', [CategoryController::class, 'store'])->name('category.store');
 
 //BrandController
-Route::get('/brands', [BrandController::class, 'index'])->name('brand.index');
-Route::get('/brands/create', [BrandController::class, 'create'])->name('brand.create');
-Route::post('/brands', [BrandController::class, 'store'])->name('brand.store');
+Route::get('/brand', [BrandController::class, 'index'])->name('brand.index');
+Route::get('/brand/create', [BrandController::class, 'create'])->name('brand.create');
+Route::post('/brand', [BrandController::class, 'store'])->name('brand.store');
 
 //ProductController
-Route::get('/products', [ProductController::class, 'index'])->name('product.index');
-Route::get('/products/create', [ProductController::class, 'create'])->name('product.create');
-Route::post('/products', [ProductController::class, 'store'])->name('product.store');
+Route::get('/product', [ProductController::class, 'index'])->name('product.index');
+Route::get('/product/create', [ProductController::class, 'create'])->name('product.create');
+Route::post('/product', [ProductController::class, 'store'])->name('product.store');
+
+//ImagesController
+Route::get('/image', [ImageController::class, 'index'])->name('image.index');
+Route::get('/image/create', [ImageController::class, 'create'])->name('image.create');
+Route::post('/image', [ImageController::class, 'store'])->name('image.store');
+

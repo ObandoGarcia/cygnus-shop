@@ -3,7 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Category;
+use App\Models\Brand;
 use Illuminate\Http\Request;
+use App\Http\Requests\CreateProductRequest;
 
 class ProductController extends Controller
 {
@@ -13,7 +16,7 @@ class ProductController extends Controller
     public function index()
     {
         $products = Product::with(['category', 'brand'])->paginate(10);
-        
+
         return view('product.index', compact('products'));
     }
 
@@ -22,15 +25,34 @@ class ProductController extends Controller
      */
     public function create()
     {
-        //
+        $categories = Category::all();
+        $brands = Brand::all();
+
+        return view('product.create', compact('categories', 'brands'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateProductRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+
+        $product = new Product();
+        $product->name = $validatedData['name'];
+        $product->description = $validatedData['description'];
+        $product->code = $validatedData['code'];
+        $product->purchase_price = $validatedData['purchase_price'];
+        $product->sale_price = $validatedData['sale_price'];
+        $product->stock = $validatedData['stock'];
+        $product->available_stock = $validatedData['available_stock'];
+        $product->category_Id = $validatedData['category_id'];
+        $product->brand_id = $validatedData['brand_id'];
+        $product->status = $validatedData['status'];
+        $product->user_id = 1;
+        $product->save();
+
+        return redirect()->route('product.index')->with('success', 'Producto creado');
     }
 
     /**

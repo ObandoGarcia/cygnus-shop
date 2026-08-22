@@ -18,6 +18,7 @@ class CreateProductRequest extends FormRequest
             'sale_price.required' => 'El precio de venta es obligatorio.',
             'stock.required' => 'La cantidad en stock es obligatoria.',
             'available_stock.required' => 'La cantidad disponible en stock es obligatoria.',
+            'availabler_stock' => 'Cantidad de stock es incorrecta',
             'category_id.required' => 'La categoría es obligatoria.',
             'category_id.exists' => 'La categoría seleccionada no existe.',
             'brand_id.required' => 'La marca es obligatoria.',

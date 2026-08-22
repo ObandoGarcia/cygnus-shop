@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Image;
+use App\Http\Requests\CreateImageRequest;
 use Illuminate\Http\Request;
 
 class ImageController extends Controller
@@ -12,7 +13,9 @@ class ImageController extends Controller
      */
     public function index()
     {
-        //
+        $images = Image::paginate(10);
+
+        return view('image.index', compact('images'));
     }
 
     /**
@@ -20,15 +23,23 @@ class ImageController extends Controller
      */
     public function create()
     {
-        //
+        return view('image.create');
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(CreateImageRequest $request)
     {
-        //
+        $validatedData = $request->validated();
+
+        $image = new Image();
+        $image->filename = $validatedData['filename'];
+        $image->url = $validatedData['url'];
+        $image->user_id = 1;
+        $image->save();
+
+        return redirect()->route('image.index')->with('success', 'Imagen creada correctamente');
     }
 
     /**

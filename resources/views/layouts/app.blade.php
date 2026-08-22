@@ -7,14 +7,16 @@
 
     <title>{{ config('app.name', 'Cygnus Shop') }}@yield('title')</title>
 
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/css/tabler.min.css" />
+
+
 </head>
 
 <body>
     <header>
-        <nav class="navbar navbar-expand-lg bg-body-tertiary">
-            <div class="container-fluid">
-                <a class="navbar-brand" href="#">Cygnus Shop</a>
+        <nav class="navbar navbar-expand-md d-print-none">
+            <div class="container-xl">
+                <a class="navbar-brand navbar-brand-autodark me-3" href="#">Cygnus Shop</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false"
                     aria-label="Toggle navigation">
@@ -22,7 +24,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
-                       <li class="nav-item dropdown">
+                        <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
                                 Producto
@@ -34,12 +36,12 @@
                             </ul>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Imagenes</a>
+                            <a class="nav-link" href="{{ route('image.index')}}">Imagenes</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#">Ventas</a>
                         </li>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="#">Compras</a>
                         </li>
                         <li class="nav-item">
@@ -48,14 +50,14 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                                 aria-expanded="false">
-                               Cliente
+                                Cliente
                             </a>
                             <ul class="dropdown-menu">
                                 <li><a class="dropdown-item" href="#">Cliente</a></li>
                                 <li><a class="dropdown-item" href="{{ route('address.index') }}">Direcciones</a></li>
                             </ul>
                         </li>
-                         <li class="nav-item">
+                        <li class="nav-item">
                             <a class="nav-link" href="#">Proveedores</a>
                         </li>
                         <li class="nav-item dropdown">
@@ -73,11 +75,11 @@
         </nav>
     </header>
 
-    <main class="container">
+    <main class="container-xl">
         @yield('main-content')
     </main>
 </body>
 
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/js/tabler.min.js"></script>
 
 </html>
