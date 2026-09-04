@@ -10,7 +10,7 @@
     </section>
 
     <section class="mt-3">
-        <a href="{{ route('products.images.create', $product) }}" class="btn btn-primary">Crear nueva imagen</a>
+        <a href="{{ route('admin.products.images.create', $product) }}" class="btn btn-primary">Crear nueva imagen</a>
     </section>
 
     <section class="row row-deck mt-3">

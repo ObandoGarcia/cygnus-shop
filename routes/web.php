@@ -9,34 +9,36 @@ use App\Http\Controllers\Admin\ProductController;
 use App\Http\Controllers\Admin\ImageController;
 use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\RegisterController;
+use App\Http\Controllers\Public\HomeController;
+use App\Http\Controllers\Public\PublicProductController;
 
 //HomeController
 Route::get('/', [HomeController::class, 'index'])->name('public.index');
-Route::get('admin/dashboard', [DashboardController::class, 'dashboard'])->name('admin.dashboard');
 
-//AuthController
-Route::get('/auth/login', [LoginController::class, 'login'])->name('login');
-Route::get('/auth/register', [RegisterController::class, 'register'])->name('register');
+//Auth
+Route::get('/auth/login', [LoginController::class, 'create'])->name('login.index');
+Route::post('/auth/login', [LoginController::class, 'store'])->name('login.store');
+Route::post('/auth/logout', [LoginController::class, 'destroy'])->name('login.destroy');
 
-//AddressController
-Route::get('admin/addresses', [AddressController::class, 'index'])->name('addresses.index');
+Route::get('/auth/register', [RegisterController::class, 'create'])->name('register.create');
+Route::post('/auth/register', [RegisterController::class, 'store'])->name('register.store');
 
-//CategoryController
-Route::get('admin/categories', [CategoryController::class, 'index'])->name('categories.index');
-Route::get('admin/categories/create', [CategoryController::class, 'create'])->name('categories.create');
-Route::post('admin/categories', [CategoryController::class, 'store'])->name('categories.store');
+//Admin routes
+Route::middleware(['auth', 'role:administrator'])
+    ->prefix('admin')
+    ->name('admin.')
+    ->group(function () {
+        Route::get('/dashboard', [DashboardController::class, 'dashboard'])->name('dashboard');
 
-//BrandController
-Route::get('admin/brands', [BrandController::class, 'index'])->name('brands.index');
-Route::get('admin/brands/create', [BrandController::class, 'create'])->name('brands.create');
-Route::post('admin/brands', [BrandController::class, 'store'])->name('brands.store');
+        Route::resource('addresses', AddressController::class);
+        Route::resource('categories', CategoryController::class);
+        Route::resource('brands', BrandController::class);
+        Route::resource('products', ProductController::class);
 
-//ProductController
-Route::get('admin/products', [ProductController::class, 'index'])->name('products.index');
-Route::get('admin/products/create', [ProductController::class, 'create'])->name('products.create');
-Route::post('admin/products', [ProductController::class, 'store'])->name('products.store');
+       Route::resource(
+            'products.images',
+            ImageController::class
+        );
+    });
 
-//ProductImages
-Route::get('admin/products/{product}/images', [ImageController::class, 'index'])->name('products.images.index');
-Route::get('admin/products/{product}/images/create', [ImageController::class, 'create'])->name('products.images.create');
-Route::post('admin/products/{product}/images/store', [ImageController::class, 'store'])->name('products.images.store');
+

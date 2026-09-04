@@ -11,7 +11,7 @@
     </section>
 
     <section>
-        <a href="{{ route('products.create') }}" class="btn btn-primary">
+        <a href="{{ route('admin.products.create') }}" class="btn btn-primary">
             Crear nuevo producto
         </a>
     </section>
@@ -48,7 +48,7 @@
                         <td>{{ $product->status }}</td>
                         <td>
                             <div class="btn-actions">
-                                <a href="{{ route('products.create') }}" class="btn btn-action"
+                                <a href="{{ route('admin.products.create') }}" class="btn btn-action"
                                     aria-label="Edit"><!-- Download SVG icon from http://tabler.io/icons/icon/edit -->
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                         fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -58,7 +58,7 @@
                                         <path d="M16 5l3 3" />
                                     </svg>
                                 </a>
-                                <a href="{{ route('products.images.index', $product)}}" class="btn btn-action"
+                                <a href="{{ route('admin.products.images.index', $product)}}" class="btn btn-action"
                                     aria-label="Copy"><!-- Download SVG icon from http://tabler.io/icons/icon/copy -->
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"

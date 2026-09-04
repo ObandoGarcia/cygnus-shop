@@ -11,7 +11,7 @@
     </section>
 
     <section>
-        <form action="{{ route('products.images.store', $product) }}" method="POST" class="needs-validation" novalidate>
+        <form action="{{ route('admin.products.images.store', $product) }}" method="POST" class="needs-validation" novalidate>
             @csrf
 
             <div class="mb-3">

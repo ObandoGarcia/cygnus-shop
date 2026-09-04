@@ -53,7 +53,7 @@ class ProductController extends Controller
         $product->user_id = 1;
         $product->save();
 
-        return redirect()->route('products.index')->with('success', 'Producto creado');
+        return redirect()->route('admin.products.index')->with('success', 'Producto creado');
     }
 
     /**

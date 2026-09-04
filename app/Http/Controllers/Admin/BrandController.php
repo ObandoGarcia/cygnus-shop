@@ -40,7 +40,7 @@ class BrandController extends Controller
         $brand->user_id = 1;
         $brand->save();
 
-        return redirect()->route('brands.index')->with('success', 'Marca creada exitosamente.');
+        return redirect()->route('admin.brands.index')->with('success', 'Marca creada exitosamente.');
     }
 
     /**

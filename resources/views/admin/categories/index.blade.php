@@ -12,7 +12,7 @@
     </section>
 
     <section>
-        <a href="{{ route('categories.create') }}" class="btn btn-primary">Crear nueva categoría</a>
+        <a href="{{ route('admin.categories.create') }}" class="btn btn-primary">Crear nueva categoría</a>
     </section>
 
     <section class="mt-3 table-responsive">

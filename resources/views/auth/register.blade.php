@@ -16,24 +16,38 @@
             <div class="text-center mb-4">
                 <a href="#" class="navbar-brand navbar-brand-autodark">Cygnus Shop</a>
             </div>
-            <form class="card card-md" action="" autocomplete="off" novalidate>
+            <form class="card card-md" action="{{ route('register.store')}}" autocomplete="off" novalidate method="POST">
+                 @csrf
+
                 <div class="card-body">
                     <h2 class="card-title text-center mb-4">Crear una nueva cuenta</h2>
                     <div class="mb-3">
                         <label for="username">Username</label>
-                        <input type="text" class="form-control" placeholder="Ingresa tu nombre de usuario">
+                        <input type="text" name="username" class="form-control" placeholder="Ingresa tu nombre de usuario" value="{{ old('username')}}">
+                        @error('username')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="email">Email</label>
-                        <input type="email" class="form-control" placeholder="Ingresa tu correo electronico">
+                        <input type="email" name="email" class="form-control" placeholder="Ingresa tu correo electronico" value="{{ old('email')}}">
+                        @error('email')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="mb-3">
                         <label for="password">Contraseña</label>
-                        <input type="password" class="form-control" placeholder="Ingresa tu contraseña">
+                        <input type="password" name="password" class="form-control" placeholder="Ingresa tu contraseña" required>
+                        @error('password')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="mb-3">
-                        <label for="username">Repetir contraseña</label>
-                        <input type="password" class="form-control" placeholder="Repite tu contraseña">
+                        <label for="password_confirmation">Repetir contraseña</label>
+                        <input type="password" name="password_confirmation" class="form-control" placeholder="Repite tu contraseña" required>
+                        @error('password_confirmation')
+                            <p class="text-danger">{{ $message }}</p>
+                        @enderror
                     </div>
                     <div class="form-footer">
                         <button class="btn btn-primary w-100" type="submit">Crear nueva cuenta</button>

@@ -41,7 +41,7 @@ class ImageController extends Controller
         $image->user_id = 1;
         $image->save();
 
-        return redirect()->route('products.images.index', $product)->with('success', 'Imagen creada correctamente');
+        return redirect()->route('admin.products.images.index', $product)->with('success', 'Imagen creada correctamente');
     }
 
     /**

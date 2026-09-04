@@ -12,7 +12,7 @@
     </section>
 
     <section>
-        <a href="{{ route('brands.create') }}" class="btn btn-primary">Crear nueva marca</a>
+        <a href="{{ route('admin.brands.create') }}" class="btn btn-primary">Crear nueva marca</a>
     </section>
 
     <section class="mt-3 table-responsive">
