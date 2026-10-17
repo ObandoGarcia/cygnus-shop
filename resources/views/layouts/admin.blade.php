@@ -8,8 +8,7 @@
     <title>{{ config('app.name', 'Cygnus Shop') }}@yield('title')</title>
 
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/css/tabler.min.css" />
-
-
+    <link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet">
 </head>
 
 <body>
@@ -62,9 +61,9 @@
                         </li>
                     </ul>
                     <div class="navbar-nav flex-row order-md-last ms-auto">
-                        <div class="nav-item dropdown">
-                            <a href="#" class="nav-link d-flex lh-1 text-reset" data-bs-toggle="dropdown"
-                                aria-label="Open user menu">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                                aria-expanded="false">
                                 <span class="avatar avatar-sm">
                                     <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                         viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -77,34 +76,42 @@
                                     </svg>
                                 </span>
                                 <div class="d-none d-xl-block ps-2">
-                                    <div>Has iniciado sesión como</div>
-                                    <div class="mt-1 small text-secondary">{{ Auth::user()->username }}</div>
+                                    <div>Has iniciado sesión como: </div>
+                                    <div class="mt-1 small text-secondary">{{ Auth::user()->email }}</div>
                                 </div>
                             </a>
-                            <div class="dropdown-menu dropdown-menu-end dropdown-menu-arrow">
-                                <a href="#" class="dropdown-item">Status</a>
-                                <a href="./profile.html" class="dropdown-item">Profile</a>
-                                <a href="#" class="dropdown-item">Feedback</a>
-                                <div class="dropdown-divider"></div>
-                                <a href="./settings.html" class="dropdown-item">Settings</a>
-                                <a href="./sign-in.html" class="dropdown-item">
-                                    <form action="{{ route('login.destroy') }}" method="POST">
-                                        <button class="btn btn-danger" type="submit">Cerrar sesion</button>
-                                    </form>
-                                </a>
-                            </div>
-                        </div>
+                            <ul class="dropdown-menu">
+                                <li>
+                                    <a class="dropdown-item" href="{{ route('admin.addresses.index') }}">Perfil</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li class="nav-item">
+                            <a href="#">
+                                <form action="{{ route('login.destroy') }}" method="POST">
+                                    <input class="btn btn-danger" type="submit" value="Cerrar sesion">
+                                </form>
+                            </a>
+                        </li>
                     </div>
                 </div>
             </div>
         </nav>
     </header>
 
-    <main class="container-xl">
-        @yield('main-content')
+    <main class="page">
+        <div class="page-wrapper">
+            <div class="container-xl py-4">
+                @yield('main-content')
+            </div>
+        </div>
     </main>
-</body>
 
-<script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/js/tabler.min.js"></script>
+    @stack('scripts')
+
+    <script src="https://cdn.jsdelivr.net/npm/@tabler/core@1.4.0/dist/js/tabler.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
+</body>
 
 </html>

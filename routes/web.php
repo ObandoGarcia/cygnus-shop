@@ -15,6 +15,10 @@ use App\Http\Controllers\Public\PublicProductController;
 //HomeController
 Route::get('/', [HomeController::class, 'index'])->name('public.index');
 
+//Public products
+Route::get('/products', [PublicProductController::class, 'index'])->name('public.products.index');
+Route::get('/products/{product}', [PublicProductController::class, 'show'])->name('public.products.show');
+
 //Auth
 Route::get('/auth/login', [LoginController::class, 'create'])->name('login.index');
 Route::post('/auth/login', [LoginController::class, 'store'])->name('login.store');

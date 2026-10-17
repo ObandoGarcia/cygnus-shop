@@ -38,7 +38,7 @@ class ImageController extends Controller
         $image->filename = $validatedData['filename'];
         $image->url = $validatedData['url'];
         $image->product_id = $product->id;
-        $image->user_id = 1;
+        $image->user_id = auth()->user()->id;
         $image->save();
 
         return redirect()->route('admin.products.images.index', $product)->with('success', 'Imagen creada correctamente');

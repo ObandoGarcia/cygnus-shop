@@ -37,7 +37,7 @@ class BrandController extends Controller
         $brand = new Brand();
         $brand->name = $validatedData['name'];
         $brand->status = $validatedData['status'];
-        $brand->user_id = 1;
+        $brand->user_id = auth()->user()->id;
         $brand->save();
 
         return redirect()->route('admin.brands.index')->with('success', 'Marca creada exitosamente.');

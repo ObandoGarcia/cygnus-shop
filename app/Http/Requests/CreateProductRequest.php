@@ -18,7 +18,7 @@ class CreateProductRequest extends FormRequest
             'sale_price.required' => 'El precio de venta es obligatorio.',
             'stock.required' => 'La cantidad en stock es obligatoria.',
             'available_stock.required' => 'La cantidad disponible en stock es obligatoria.',
-            'availabler_stock' => 'Cantidad de stock es incorrecta',
+            'available_stock.integer' => 'La cantidad disponible en stock debe ser un número entero.',
             'category_id.required' => 'La categoría es obligatoria.',
             'category_id.exists' => 'La categoría seleccionada no existe.',
             'brand_id.required' => 'La marca es obligatoria.',
@@ -28,11 +28,22 @@ class CreateProductRequest extends FormRequest
         ];
     }
 
+    protected function prepareForValidation(): void
+    {
+        $description = strip_tags($this->description ?? '');
+
+        $this->merge([
+            'description' => trim($description) === ''
+                ? null
+                : $this->description,
+        ]);
+    }
+
     public function rules(): array
     {
         return [
             'name' => ['required', 'string', 'max:255'],
-            'description' => ['required', 'string', 'max:255'],
+            'description' => ['required', 'string', 'max:500'],
             'code' => ['required', 'string', 'max:255', 'unique:products,code'],
             'purchase_price' => ['required', 'numeric'],
             'sale_price' => ['required', 'numeric'],

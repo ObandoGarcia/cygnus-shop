@@ -47,13 +47,13 @@ class ProductController extends Controller
         $product->sale_price = $validatedData['sale_price'];
         $product->stock = $validatedData['stock'];
         $product->available_stock = $validatedData['available_stock'];
-        $product->category_Id = $validatedData['category_id'];
+        $product->category_id = $validatedData['category_id'];
         $product->brand_id = $validatedData['brand_id'];
         $product->status = $validatedData['status'];
-        $product->user_id = 1;
+        $product->user_id = auth()->user()->id;
         $product->save();
 
-        return redirect()->route('admin.products.index')->with('success', 'Producto creado');
+        return redirect()->route('admin.products.index')->with('success', 'Product added successfully.');
     }
 
     /**

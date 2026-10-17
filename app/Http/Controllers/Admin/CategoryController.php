@@ -38,7 +38,7 @@ class CategoryController extends Controller
         $category->name = $validatedData['name'];
         $category->description = $validatedData['description'];
         $category->status = $validatedData['status'];
-        $category->user_id = 1;
+        $category->user_id = auth()->user()->id;;
         $category->save();
 
         return redirect()->route('admin.categories.index')->with('success', 'Categoría creada exitosamente.');

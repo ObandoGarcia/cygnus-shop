@@ -13,18 +13,23 @@
         <a href="{{ route('admin.products.images.create', $product) }}" class="btn btn-primary">Crear nueva imagen</a>
     </section>
 
-    <section class="row row-deck mt-3">
-        <div class="col-md-12">
-            @foreach ($images as $image)
-                <div class="card">
+    <section class="row row-deck mt-3 g-3">
+        @foreach ($images as $image)
+            <div class="col-sm-6 col-md-4 col-lg-3">
+                <div class="card h-100">
+
                     <div class="card-img-top">
-                        <img src="{{ $image->url }}" alt="Imagen de producto">
+                        <img src="{{ $image->url }}" alt="Imagen de producto" class="w-100">
                     </div>
+
                     <div class="card-body">
-                        <h3>{{ $image->filename }}</h3>
+                        <h3 class="card-title">
+                            {{ $image->filename }}
+                        </h3>
                     </div>
+
                 </div>
-            @endforeach
-        </div>
+            </div>
+        @endforeach
     </section>
 @endsection

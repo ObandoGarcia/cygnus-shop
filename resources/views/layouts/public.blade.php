@@ -23,7 +23,7 @@
                 <div class="collapse navbar-collapse" id="navbarNavDropdown">
                     <ul class="navbar-nav">
                         <li class="nav-item">
-                            <a class="nav-link" href="#">Productos</a>
+                            <a class="nav-link" href="{{ route('public.products.index') }}">Productos</a>
                         </li>
                     </ul>
                 </div>

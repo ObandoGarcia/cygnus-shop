@@ -23,12 +23,51 @@
             </div>
 
             <div class="mb-3">
-                <label for="description" class="form-label">Descripción</label>
-                <textarea name="description" id="description" class="form-control" rows="3" required>{{ old('description') }}</textarea>
+
+                <label for="description" class="form-label">
+                    Descripción
+                </label>
+
+                <div id="editor">
+                    {!! old('description') !!}
+                </div>
+
+                <input type="hidden" name="description" id="description" value="{{ old('description') }}">
+
                 @error('description')
-                    <p class="text-danger">{{ $message }}</p>
+                    <div class="text-danger mt-2">
+                        {{ $message }}
+                    </div>
                 @enderror
+
             </div>
+
+            @push('scripts')
+                <script>
+                    document.addEventListener('DOMContentLoaded', function() {
+
+                        const quill = new Quill('#editor', {
+                            theme: 'snow'
+                        });
+
+                        const form = editor.closest('form');
+                        const description = document.querySelector('#description');
+
+                        form.addEventListener('submit', function(event) {
+                            description.value = quill.root.innerHTML;
+                        });
+
+                    });
+                </script>
+            @endpush
+
+            <!--<div class="mb-3">
+                        <label for="description" class="form-label">Descripción</label>
+                        <textarea name="description" id="description" class="form-control" rows="3" required>{{ old('description') }}</textarea>
+                        @error('description')
+            <p class="text-danger">{{ $message }}</p>
+            @enderror
+                    </div>-->
 
             <div class="mb-3">
                 <label for="code" class="form-label">Código</label>
@@ -50,8 +89,8 @@
 
             <div class="mb-3">
                 <label for="sale_price" class="form-label">Precio de venta</label>
-                <input type="number" name="sale_price" id="sale_price" class="form-control" value="{{ old('sale_price') }}"
-                    required>
+                <input type="number" name="sale_price" id="sale_price" class="form-control"
+                    value="{{ old('sale_price') }}" required>
                 @error('sale_price')
                     <p class="text-danger">{{ $message }}</p>
                 @enderror
