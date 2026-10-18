@@ -20,11 +20,12 @@ class DatabaseSeeder extends Seeder
         Role::create(['name' => 'customer']);
 
         $user = new User();
-        $user->username = 'obandogarcia310775';
+        $user->username = 'obandogarcia';
         $user->email = 'obandogarcia10635@gmail.com';
         $user->password = Hash::make('Ecuacionlineal1/$');
+        $user->save();
+
 
         $user->assignRole('administrator');
-        $user->save();
     }
 }
