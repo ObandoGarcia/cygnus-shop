@@ -8,14 +8,14 @@
     <section>
         <div class="row row-cards mt-4">
             @foreach ($products as $product)
-                <div class="col-sm-6 col-md-4 col-lg-3">
-                    <div class="card h-100">
+                <div class="col-sm-6 col-lg-4">
+                    <div class="card card-sm">
 
                         {{-- Imagen --}}
                         <div class="ratio ratio-1x1">
                             @if ($product->images->isNotEmpty())
                                 <img src="{{ $product->images->first()->url }}" alt="{{ $product->name }}"
-                                    class="object-fit-contain">
+                                    class="card-img-top">
                             @else
                                 <div class="empty">
                                     <div class="empty-img">
@@ -35,18 +35,22 @@
                                 {{ $product->name }}
                             </h3>
 
+                            <p class="text-secondary">
+                                {{ $product->category->name }}
+                            </p>
+
                             <p class="text-secondary mb-2">
                                 {{ $product->brand->name }}
                             </p>
 
-                            <div class="h3 mb-0">
-                                ${{ number_format($product->sale_price, 2) }}
+                            <div class="text-success fw-bold">
+                                <strong class="display-6">${{ number_format($product->sale_price, 2) }}</strong>
                             </div>
                         </div>
 
                         {{-- Acción --}}
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary w-100">
+                            <a href="{{ route('public.products.show', $product) }}" class="btn btn-primary w-100">
                                 Ver producto
                             </a>
                         </div>

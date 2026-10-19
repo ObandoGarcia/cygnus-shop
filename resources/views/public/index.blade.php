@@ -46,7 +46,7 @@
 
                         {{-- Acción --}}
                         <div class="card-footer">
-                            <a href="#" class="btn btn-primary w-100">
+                            <a href="{{ route('public.products.show', $product) }}" class="btn btn-primary w-100">
                                 Ver producto
                             </a>
                         </div>

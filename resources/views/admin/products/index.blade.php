@@ -50,11 +50,25 @@
                                     <td>{{ $product->available_stock }}</td>
                                     <td>{{ $product->category->name }}</td>
                                     <td>{{ $product->brand->name }}</td>
-                                    <td>{{ $product->status }}</td>
+                                    <td>
+                                        @if ($product->status == 'active')
+                                            <span class="badge bg-green text-green-fg">Activo</span>
+                                        @endif
+                                        @if ($product->status == 'inactive')
+                                            <span class="badge bg-red text-red-fg">Inactivo</span>
+                                        @endif
+                                        @if ($product->status == 'discontinued')
+                                            <span class="badge bg-blue text-blue-fg">Descontinuado</span>
+                                        @endif
+                                        @if ($product->status == 'out_of_stock')
+                                            <span class="badge bg-yellow text-yellow-fg">Agotado</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <div class="btn-actions">
-                                            <a href="{{ route('admin.products.create') }}" class="btn btn-action"
-                                                aria-label="Edit"><!-- Download SVG icon from http://tabler.io/icons/icon/edit -->
+                                            <a href="{{ route('admin.products.create') }}"
+                                                class="btn btn-action"
+                                                aria-label="Edit">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -67,7 +81,7 @@
                                             </a>
                                             <a href="{{ route('admin.products.images.index', $product) }}"
                                                 class="btn btn-action"
-                                                aria-label="Copy"><!-- Download SVG icon from http://tabler.io/icons/icon/copy -->
+                                                aria-label="Copy">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
@@ -83,7 +97,7 @@
                                                 </svg>
                                             </a>
                                             <a href="#" class="btn btn-action"
-                                                aria-label="Delete"><!-- Download SVG icon from http://tabler.io/icons/icon/trash -->
+                                                aria-label="Delete">
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                     viewBox="0 0 24 24" fill="none" stroke="currentColor"
                                                     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"

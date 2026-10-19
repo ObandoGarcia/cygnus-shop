@@ -39,7 +39,9 @@ class PublicProductController extends Controller
      */
     public function show(Product $product)
     {
-        //
+        $images = $product->images()->get();
+
+        return view("public.products.show", compact("product", "images"));
     }
 
     /**

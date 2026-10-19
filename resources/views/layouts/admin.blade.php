@@ -76,8 +76,8 @@
                                     </svg>
                                 </span>
                                 <div class="d-none d-xl-block ps-2">
-                                    <div>Has iniciado sesión como: </div>
-                                    <div class="mt-1 small text-secondary">{{ Auth::user()->email }}</div>
+                                    <div>Usuario: </div>
+                                    <div class="mt-1 small text-secondary">{{ Auth::user()->username }}</div>
                                 </div>
                             </a>
                             <ul class="dropdown-menu">
