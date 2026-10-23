@@ -38,7 +38,14 @@
                                 <tr>
                                     <td>{{ $category->name }}</td>
                                     <td>{{ $category->description }}</td>
-                                    <td>{{ $category->status }}</td>
+                                    <td>
+                                        @if ($category->status == 'active')
+                                            <span class="badge bg-green text-green-fg">Activo</span>
+                                        @endif
+                                        @if ($category->status == 'inactive')
+                                            <span class="badge bg-red text-red-fg">Inactivo</span>
+                                        @endif
+                                    </td>
                                     <td>
                                         <div class="btn-actions">
                                             <a href="{{ route('admin.products.create') }}" class="btn btn-action"

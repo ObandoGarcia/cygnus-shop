@@ -6,7 +6,7 @@
 
 @section('main-content')
     <section class="mt-3">
-        <h2>Imagenes del producto: <strong>{{ $product->name }}</strong></h2>
+        <h2>Producto: <strong>{{ $product->name }}</strong></h2>
     </section>
 
     <section class="mt-3">

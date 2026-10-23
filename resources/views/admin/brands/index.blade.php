@@ -35,9 +35,10 @@
                                 <tr>
                                     <td>{{ $brand->name }}</td>
                                     <td>
-                                        @if ( $brand->status == 'active')
+                                        @if ($brand->status == 'active')
                                             <span class="badge bg-green text-green-fg">Activo</span>
-                                        @else
+                                        @endif
+                                        @if ($brand->status == 'inactive')
                                             <span class="badge bg-red text-red-fg">Inactivo</span>
                                         @endif
                                     </td>
